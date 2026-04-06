@@ -13,15 +13,12 @@ let cachedToken = null;
 let tokenExpiresAt = 0;
 
 export default async function handler(req, res) {
-  const DASHBOARD_SECRET = process.env.DASHBOARD_SECRET || "";
-  const dashKey = req.query.key || "";
-  const isDashboard = DASHBOARD_SECRET && dashKey === DASHBOARD_SECRET;
   const allowedOrigins = [
     process.env.ALLOWED_ORIGIN || "https://mysmartbazaar.com",
     "https://www.mysmartbazaar.com"
   ];
   const origin = req.headers.origin || "";
-  const corsOrigin = isDashboard ? "*" : (allowedOrigins.includes(origin) ? origin : allowedOrigins[0]);
+  const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
 
   res.setHeader("Access-Control-Allow-Origin", corsOrigin);
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
