@@ -1,0 +1,6 @@
+{
+  "name": "msb-leaderboard-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shopify leaderboard proxy for MySmartBazaar"
+}
